@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/career",
-        element: Career
+        Component: Career
     },
 ])
 

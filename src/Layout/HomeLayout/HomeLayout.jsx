@@ -1,10 +1,11 @@
 import React from 'react';
 import { Outlet } from 'react-router';
 import Header from '../../Components/Header/Header';
+import About from '../../Pages/About/About';
 
 const HomeLayout = () => {
     return (
-        <div>
+        <div className='mx-24'>
             <header>
                 <Header></Header>
             </header>
