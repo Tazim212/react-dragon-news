@@ -2,6 +2,9 @@ import React from 'react';
 import { Outlet } from 'react-router';
 import Header from '../../Components/Header/Header';
 import About from '../../Pages/About/About';
+import Categories from '../../Components/Categories/Categories';
+import RightSide from '../../Components/RightSide/RightSide';
+import Qzone from '../../Pages/Qzone/Qzone';
 
 const HomeLayout = () => {
     return (
@@ -9,12 +12,17 @@ const HomeLayout = () => {
             <header>
                 <Header></Header>
             </header>
-            <main>
-                <aside>
-                    <button className='btn btn-primary'>btn</button>
+            <main className='grid grid-cols-12'>
+                <aside className='col-span-3'>
+                    <Categories></Categories>
                 </aside>
-                <Outlet></Outlet>
-                <aside>right side</aside>
+                <section className='col-span-6'>
+                    <Outlet></Outlet>
+                </section>
+                <aside className='col-span-3'>
+                    <RightSide></RightSide>
+                    <Qzone></Qzone>
+                </aside>
             </main>
         </div>
     );

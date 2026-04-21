@@ -18,13 +18,13 @@ const Header = () => {
                 <p>Journalism Without Fear or Favour</p>
                 <p>{formattedDate}</p>
             </section>
-            <section className='flex gap-3 items-center bg-base-200 p-4'>
+            <section className='flex gap-3 items-center bg-base-200 p-4 my-3'>
                 <button className='btn btn-secondary'>Latest</button>
                 <p className="marquee">Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
                     Assumenda commodi explicabo quidem quos.</p>
             </section>
 
-            <section className="my-3">
+            <section className="my-4">
                 <div className="navbar shadow-sm">
                     <div className="navbar-start">
                         <div className="dropdown">
