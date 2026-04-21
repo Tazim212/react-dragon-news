@@ -1,8 +1,9 @@
 import React from "react";
 import { FaStar, FaRegBookmark, FaShareAlt, FaEye } from "react-icons/fa";
 
-const NewsCard = ({ news }) => {
+const NewsCard = ({ news, handleSaved}) => {
     const {
+        id,
         title,
         image_url,
         details,
@@ -31,7 +32,7 @@ const NewsCard = ({ news }) => {
                 </div>
 
                 <div className="flex gap-4 text-gray-500 text-lg">
-                    <FaRegBookmark className="cursor-pointer" />
+                    <FaRegBookmark onClick={() =>handleSaved(id)} className="cursor-pointer" />
                     <FaShareAlt className="cursor-pointer" />
                 </div>
             </div>
