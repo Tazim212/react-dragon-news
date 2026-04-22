@@ -2,9 +2,28 @@ import { Link, NavLink } from "react-router";
 import logo from "../../assets/logo.png"
 import { format } from "date-fns";
 import icon from "../../assets/user.png"
+import { use } from "react";
+import { AuthContext } from "../AuthContext/AuthContext";
+import Swal from "sweetalert2";
 
 const Header = () => {
     const formattedDate = format(new Date(), "EEEE, MMMM, dd, yyyy")
+
+    const { user, signedOut } = use(AuthContext)
+
+    console.log(user)
+    const handleSignOut = () => {
+        signedOut()
+            .then(() => {
+                Swal.fire({
+                    title: "Signed Out Successfully",
+                    icon: "success"
+                });
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     const list = <>
         <NavLink to="/">Home</NavLink>
@@ -20,7 +39,7 @@ const Header = () => {
             </section>
             <section className='flex gap-3 items-center bg-base-200 p-4 my-3'>
                 <button className='btn btn-secondary'>Latest</button>
-                <p className="marquee">Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                <p className="marquee">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Assumenda commodi explicabo quidem quos.</p>
             </section>
 
@@ -44,8 +63,15 @@ const Header = () => {
                         </ul>
                     </div>
                     <div className="navbar-end gap-4">
+                        {
+                            user && <p>{user.email}</p>
+                        }
                         <img src={icon} alt="" />
-                        <Link to="/login"><button className="btn btn-outline btn-primary">Log In</button></Link>
+                        {
+                            user ? <button onClick={handleSignOut} className="btn">Sign Out</button>
+                                :
+                                <Link to="/login"><button className="btn btn-outline btn-primary">Log In</button></Link>
+                        }
                     </div>
                 </div>
             </section>
