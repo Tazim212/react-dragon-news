@@ -1,12 +1,15 @@
 import React, { use, useState } from 'react';
 import { AuthContext } from '../AuthContext/AuthContext';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 
 
 const Register = () => {
 
     const { createUser } = use(AuthContext)
     const [error, setError] = useState("")
+
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const handleRegister = e => {
         e.preventDefault()
@@ -18,6 +21,7 @@ const Register = () => {
         createUser(email, password)
         .then(res =>{
             console.log(res.user)
+            navigate(location?.state || "/")
             e.target.reset()
         })
         .catch(err =>{

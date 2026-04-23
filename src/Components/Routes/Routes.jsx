@@ -3,9 +3,10 @@ import HomeLayout from "../../Layout/HomeLayout/HomeLayout";
 import About from "../../Pages/About/About";
 import Career from "../../Pages/Career/Career";
 import NewsContainer from "../NewsContainer/NewsContainer";
-import Home from "../../Pages/Home/Home";
 import LogIn from "../Categories/LogIn/LogIn";
 import Register from "../Register/Register";
+import NewsDetails from "../../Pages/NewsDetails/NewsDetails";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -21,11 +22,15 @@ const router = createBrowserRouter([
     },
     {
         path: "/about",
-        Component: About
+        element: <PrivateRoute><About></About></PrivateRoute>
     },
     {
         path: "/career",
         Component: Career
+    },
+    {
+        path: "/newsdetails/:id",
+        Component: NewsDetails
     },
     {
         path: "/login",

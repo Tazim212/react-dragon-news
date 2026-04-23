@@ -1,5 +1,6 @@
 import React from "react";
 import { FaStar, FaRegBookmark, FaShareAlt, FaEye } from "react-icons/fa";
+import { Link } from "react-router";
 
 const NewsCard = ({ news, handleSaved}) => {
     const {
@@ -45,9 +46,9 @@ const NewsCard = ({ news, handleSaved}) => {
             {/* Image */}
             <div className="px-4">
                 <img
-                    src={image_url}
+                    src={image_url || "No image found"}
                     alt=""
-                    className="w-full h-[300px] object-cover rounded-lg"
+                    className="w-full h-75 object-cover rounded-lg"
                 />
             </div>
 
@@ -63,9 +64,9 @@ const NewsCard = ({ news, handleSaved}) => {
                         details}
                 </p>
 
-                <button className="text-orange-500 font-semibold mt-2">
+                <Link to={`/newsdetails/${id}`}><button className="text-orange-500 font-semibold mt-2 cursor-pointer">
                     Read More
-                </button>
+                </button></Link>
             </div>
 
             {/* Footer */}

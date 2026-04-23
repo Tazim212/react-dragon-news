@@ -1,5 +1,5 @@
 import React, { use, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../AuthContext/AuthContext';
 
 const LogIn = () => {
@@ -7,6 +7,9 @@ const LogIn = () => {
     const { signedUser } = use(AuthContext)
 
     const [error, setError] = useState("")
+
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const handleSignIn = e =>{
         e.preventDefault()
@@ -20,6 +23,7 @@ const LogIn = () => {
         signedUser(email, password)
         .then(res =>{
             console.log(res.user)
+            navigate(location?.state || "/")
         })
         .catch(err =>{
             console.log(err)

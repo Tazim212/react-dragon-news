@@ -13,3 +13,19 @@
 --color-base-100: #E7E7E7;
 --color-base-200: #F3F3F3;
 }
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  background: #f3f4f6;
+  padding: 10px 0;
+}
+
+.marquee-text {
+  display: inline-block;
+  animation: scroll 300s linear infinite;
+}
+
+@keyframes scroll {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
+}

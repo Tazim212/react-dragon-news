@@ -1,17 +1,16 @@
 import { Link, NavLink } from "react-router";
-import logo from "../../assets/logo.png"
-import { format } from "date-fns";
 import icon from "../../assets/user.png"
 import { use } from "react";
 import { AuthContext } from "../AuthContext/AuthContext";
 import Swal from "sweetalert2";
+import Heading from "../../Pages/Heading/Heading";
 
 const Header = () => {
-    const formattedDate = format(new Date(), "EEEE, MMMM, dd, yyyy")
 
     const { user, signedOut } = use(AuthContext)
 
-    console.log(user)
+    // console.log(user)
+
     const handleSignOut = () => {
         signedOut()
             .then(() => {
@@ -27,22 +26,15 @@ const Header = () => {
 
     const list = <>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/about">About</NavLink>
+        {
+            user && <NavLink to="/about">About</NavLink>
+
+        }
         <NavLink to="/career">Career</NavLink>
     </>
     return (
         <div>
-            <section className='text-center'>
-                <img src={logo} className='mx-auto my-3' alt="" />
-                <p>Journalism Without Fear or Favour</p>
-                <p>{formattedDate}</p>
-            </section>
-            <section className='flex gap-3 items-center bg-base-200 p-4 my-3'>
-                <button className='btn btn-secondary'>Latest</button>
-                <p className="marquee">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Assumenda commodi explicabo quidem quos.</p>
-            </section>
-
+            <Heading></Heading>
             <section className="my-4">
                 <div className="navbar shadow-sm">
                     <div className="navbar-start">
@@ -66,7 +58,7 @@ const Header = () => {
                         {
                             user && <p>{user.email}</p>
                         }
-                        <img src={icon} alt="" />
+                        <img src={user?.photoURL || icon} className="rounded-full w-10 h-10" referrerPolicy="no-referrer" alt="" />
                         {
                             user ? <button onClick={handleSignOut} className="btn">Sign Out</button>
                                 :
