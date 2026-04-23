@@ -46,7 +46,7 @@ const NewsContainer = () => {
 
     return (
         <div>
-            <h1>({newses.length}) news found</h1>
+            <h1 className='ms-5 md:ms-0'>({newses.length}) news found</h1>
             {
                 newses.map(news => <NewsCard key={news.id} news={news} handleSaved={handleSaved}></NewsCard>)
             }

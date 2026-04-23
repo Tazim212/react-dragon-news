@@ -15,38 +15,37 @@ const NewsDetails = () => {
             .then(res => res.json())
             .then(data => {
                 const specific = data.find(d => d.id == id)
-                console.log(specific)
+                // console.log(specific)
                 setNews(specific)
             })
     }, [])
 
     return (
-        <div className='mx-24'>
+        <div className='mx-6 md:mx-24'>
             <header>
                 <Heading></Heading>
             </header>
-            <h1 className='font-bold text-2xl my-4'>Dragon News</h1>
+            <h1 className='font-bold text-2xl text-center md:text-left my-4'>Dragon News</h1>
 
-            <main className='grid grid-cols-12 gap-10'>
+            <main className='flex flex-col md:flex-row justify-between gap-9'>
 
-                <div className='col-span-9'>
-                    <div className="card bg-base-100 w-full shadow-sm">
-                        <figure>
-                            <img
-                                src={news?.image_url}
-                                alt="Shoes" />
-                        </figure>
-                        <div className="card-body">
-                            <h2 className="card-title">{news.title}</h2>
-                            <p>{news.details}</p>
-                            <div className="card-actions justify-start mt-5">
-                                <Link to={`/news/${news.id}`}> <button className="btn btn-secondary"><FaArrowLeft></FaArrowLeft> All news in this category</button>
-                                </Link>
-                            </div>
+                <div className="card bg-base-100 shadow-sm w-90 md:w-2/3 h-200">
+                    <figure>
+                        <img
+                            src={news?.image_url}
+                            alt="Shoes" />
+                    </figure>
+                    <div className="card-body">
+                        <h2 className="card-title">{news.title}</h2>
+                        <p>{news.details}</p>
+                        <div className="card-actions justify-start mt-5">
+                            <Link to={`/news/${news.id}`}> <button className="btn btn-secondary"><FaArrowLeft></FaArrowLeft> All news in this category</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
-                <div className='col-span-3'>
+
+                <div className='w-full md:w-1/3 mt-3 md:mt-0'>
                     <RightSide></RightSide>
                     <Qzone></Qzone>
                 </div>

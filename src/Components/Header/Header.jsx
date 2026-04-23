@@ -26,10 +26,7 @@ const Header = () => {
 
     const list = <>
         <NavLink to="/">Home</NavLink>
-        {
-            user && <NavLink to="/about">About</NavLink>
-
-        }
+        <NavLink to="/about">About</NavLink>
         <NavLink to="/career">Career</NavLink>
     </>
     return (
@@ -44,7 +41,7 @@ const Header = () => {
                             </div>
                             <ul
                                 tabIndex="-1"
-                                className="menu menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-3">
+                                className="menu menu-sm bg-linear-to-l from-emerald-700 to-blue-200 dropdown-content rounded-box z-1 mt-3 w-52 p-3">
                                 {list}
                             </ul>
                         </div>
@@ -54,7 +51,7 @@ const Header = () => {
                             {list}
                         </ul>
                     </div>
-                    <div className="navbar-end gap-4">
+                    <div className="navbar-end gap-1 md:gap-4">
                         {
                             user && <p>{user.email}</p>
                         }

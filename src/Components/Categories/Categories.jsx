@@ -12,7 +12,7 @@ const Categories = () => {
                 {
                     categories.map(category => <NavLink
                         key={category.id}
-                        className="flex flex-col my-3 btn bg-base-100 border-0 hover:bg-base-200"
+                        className="flex flex-row md:flex-col my-3 btn bg-base-100 border-0 hover:bg-base-200"
                         to={`/news/${category.id}`}
                     >{category.name}
                     </NavLink>)

@@ -8,18 +8,18 @@ import Qzone from '../../Pages/Qzone/Qzone';
 
 const HomeLayout = () => {
     return (
-        <div className='mx-24'>
+        <div className='mx-6 md:mx-22'>
             <header>
                 <Header></Header>
             </header>
-            <main className='grid grid-cols-12'>
-                <aside className='col-span-3'>
+            <main className='flex flex-col md:flex-row justify-around gap-10 flex-1'>
+                <aside>
                     <Categories></Categories>
                 </aside>
-                <section className='col-span-6'>
+                <section>
                     <Outlet></Outlet>
                 </section>
-                <aside className='col-span-3'>
+                <aside className='mx-6 md:mx-0'>
                     <RightSide></RightSide>
                     <Qzone></Qzone>
                 </aside>

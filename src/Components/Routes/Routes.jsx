@@ -16,13 +16,14 @@ const router = createBrowserRouter([
             {
                 path: "/news/:id",
                 Component: NewsContainer,
-                loader: () => fetch("/news.json")
+                loader: () => fetch("/news.json"),
+                hydrateFallbackElement: <span className="loading loading-spinner loading-lg"></span>
             }
         ]
     },
     {
         path: "/about",
-        element: <PrivateRoute><About></About></PrivateRoute>
+        element: <About></About>
     },
     {
         path: "/career",
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/newsdetails/:id",
-        Component: NewsDetails
+        element: <PrivateRoute><NewsDetails></NewsDetails></PrivateRoute>
     },
     {
         path: "/login",
