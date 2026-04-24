@@ -1,11 +1,12 @@
 import React, { use, useState } from 'react';
 import { AuthContext } from '../AuthContext/AuthContext';
 import { Link, useLocation, useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
 
 const Register = () => {
 
-    const { createUser } = use(AuthContext)
+    const { createUser, updateUser} = use(AuthContext)
     const [error, setError] = useState("")
 
     const location = useLocation()
@@ -13,6 +14,8 @@ const Register = () => {
 
     const handleRegister = e => {
         e.preventDefault()
+        const name = e.target.name.value;
+        const photo = e.target.photo.value
         const email = e.target.email.value;
         const password = e.target.password.value;
         // console.log(email, password)
@@ -21,6 +24,13 @@ const Register = () => {
         createUser(email, password)
         .then(res =>{
             console.log(res.user)
+            updateUser(name, photo)
+            .then(() =>{
+                Swal.fire("profile created")
+            })
+            .catch(err =>{
+                console.log(err)
+            })
             navigate(location?.state || "/")
             e.target.reset()
         })
@@ -35,6 +45,10 @@ const Register = () => {
             <div className="card-body">
                 <form onSubmit={handleRegister} className="fieldset">
                     <h1 className="text-3xl pt-4 text-center font-bold">Register now!</h1>
+                    <label className="label">Your Name</label>
+                    <input type="text" name="name" className="input" placeholder="Name" />
+                    <label className="label">Your photo</label>
+                    <input type="text" name="photo" className="input" placeholder="Photo" />
                     <label className="label">Email</label>
                     <input type="email" name="email" className="input" placeholder="Email" />
                     <label className="label">Password</label>
