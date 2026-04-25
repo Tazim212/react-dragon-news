@@ -26,8 +26,8 @@ const LogIn = () => {
         setError("")
 
         signedUser(email, password)
-            .then(res => {
-                console.log(res.user)
+            .then(() => {
+                // console.log(res.user)
                 navigate(location?.state || "/")
             })
             .catch(err => {

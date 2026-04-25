@@ -16,6 +16,7 @@ const HomeLayout = () => {
                 <aside>
                     <Categories></Categories>
                 </aside>
+
                 <section>
                     <Outlet></Outlet>
                 </section>

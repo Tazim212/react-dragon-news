@@ -7,8 +7,8 @@ const RightSide = () => {
 
     const handleGoogleSigned = () => {
         googleSigned()
-            .then(res => {
-                console.log(res.user)
+            .then(() => {
+                // console.log(res.user)
             })
             .then(err => {
                 console.log(err)
@@ -17,8 +17,8 @@ const RightSide = () => {
 
     const handleGithubSigned = () => {
         githubSigned()
-            .then(res => {
-                console.log(res.user)
+            .then(() => {
+                // console.log(res.user)
             })
             .then(err => {
                 console.log(err)

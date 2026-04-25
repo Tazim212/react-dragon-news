@@ -26,8 +26,8 @@ const Register = () => {
         setError("")
 
         createUser(email, password)
-            .then(res => {
-                console.log(res.user)
+            .then(() => {
+                // console.log(res.user)
                 updateUser(name, photo)
                     .then(() => {
                         Swal.fire("profile created")
