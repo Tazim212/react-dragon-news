@@ -1,6 +1,7 @@
 import React, { use, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../AuthContext/AuthContext';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const LogIn = () => {
 
@@ -8,10 +9,11 @@ const LogIn = () => {
 
     const [error, setError] = useState("")
 
+    const [show, setShow] = useState(false)
     const location = useLocation()
     const navigate = useNavigate()
 
-    const handleSignIn = e =>{
+    const handleSignIn = e => {
         e.preventDefault()
 
         const email = e.target.email.value;
@@ -21,13 +23,13 @@ const LogIn = () => {
         setError("")
 
         signedUser(email, password)
-        .then(res =>{
-            console.log(res.user)
-            navigate(location?.state || "/")
-        })
-        .catch(err =>{
-            console.log(err)
-        })
+            .then(res => {
+                console.log(res.user)
+                navigate(location?.state || "/")
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     return (
@@ -39,7 +41,15 @@ const LogIn = () => {
                         <label className="label">Email</label>
                         <input type="email" name="email" className="input" placeholder="Email" />
                         <label className="label">Password</label>
-                        <input type="password" name="password" className="input" placeholder="Password" />
+                        <input type={show ? "text" : "password"}
+                            name="password"
+                            className="input"
+                            placeholder="Password" />
+                        {
+                            show ? <button onClick={() => setShow(false)} type='button' className='relative left-72 -top-8'><FaEyeSlash className='text-lg'></FaEyeSlash></button>
+                                :
+                                <button onClick={() => setShow(true)} type='button' className='relative left-72 -top-8'><FaEye className='text-lg'></FaEye></button>
+                        }
                         <div><a className="link link-hover">Forgot password?</a></div>
                         <button className="btn btn-neutral mt-4">Login</button>
                     </fieldset>
