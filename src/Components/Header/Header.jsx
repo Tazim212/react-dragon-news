@@ -25,9 +25,9 @@ const Header = () => {
     }
 
     const list = <>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/career">Career</NavLink>
+        <NavLink to="/" className={"px-3 py-2"}>Home</NavLink>
+        <NavLink to="/faq" className={"px-3 py-2"}>About</NavLink>
+        <NavLink to="/career" className={"px-3 py-2"}>Career</NavLink>
     </>
     return (
         <div>
@@ -52,9 +52,9 @@ const Header = () => {
                         </ul>
                     </div>
                     <div className="navbar-end gap-1 md:gap-4">
-                        {
+                        {/* {
                             user && <p>{user.email}</p>
-                        }
+                        } */}
                         <img src={user?.photoURL || icon} className="rounded-full w-10 h-10" referrerPolicy="no-referrer" alt="" />
                         {
                             user ? <button onClick={handleSignOut} className="btn">Sign Out</button>
