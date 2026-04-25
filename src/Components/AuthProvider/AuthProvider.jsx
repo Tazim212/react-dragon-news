@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from '../AuthContext/AuthContext';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { auth } from '../../firebase_init';
 
 const provider = new GoogleAuthProvider();
+
+const githubProvider = new GithubAuthProvider()
 
 const AuthProvider = ({ children }) => {
 
@@ -24,9 +26,18 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, provider);
     }
 
+    const githubSigned = () =>{
+        return signInWithPopup(auth, githubProvider)
+    }
     const updateUser = (name, photo) =>{
+        setLoading(true)
         return updateProfile(auth.currentUser, {displayName: name, photoURL: photo})
     }
+
+    // const passReset = (email) =>{
+    //     setLoading(true)
+    //     return sendPasswordResetEmail(auth, email)
+    // }
     const signedOut = () =>{
         setLoading(true)
         return signOut(auth)
@@ -48,6 +59,7 @@ const AuthProvider = ({ children }) => {
         createUser,
         signedUser,
         googleSigned,
+        githubSigned,
         updateUser,
         signedOut
     }
